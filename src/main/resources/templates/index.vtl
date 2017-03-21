@@ -2,7 +2,7 @@
 <h1>Task list!</h1>
 
 <!-- use branching in Velocity to display our task's description if a task is present, the template will disply "No Tasks" -->
-#if ($task)
+#if ($tasks)
   <p>Current task:</p>
   <p>$task.getDescription()</p>
 #else
