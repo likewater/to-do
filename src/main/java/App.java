@@ -19,6 +19,12 @@ public class App {
     post("/tasks", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
+      ArrayList<Task> tasks = request.session().attribute("tasks");
+        if (tasks == null) {
+          tasks = new ArrayList<Task>();
+          request.session().attribute("tasks", tasks);
+        }
+
       String description = request.queryParams("description");
       Task newTask = new Task(description);
       request.session().attribute("task", newTask);
