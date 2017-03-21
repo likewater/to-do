@@ -27,7 +27,7 @@ public class App {
 
       String description = request.queryParams("description");
       Task newTask = new Task(description);
-      request.session().attribute("task", newTask);
+      tasks.add(newTask); // adding the task to the arrayList
 
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
