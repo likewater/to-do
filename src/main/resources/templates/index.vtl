@@ -3,8 +3,11 @@
 
 <!-- use branching in Velocity to display our task's description if a task is present, the template will disply "No Tasks" -->
 #if ($tasks)
-  <p>Current task:</p>
-  <p>$task.getDescription()</p>
+  <ul>
+    #foreach ($task in $tasks)
+      <li>$task.getDescription()</li>
+    #end
+  </ul>
 #else
   <p>No tasks!</p>
 #end
