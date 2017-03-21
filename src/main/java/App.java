@@ -19,12 +19,14 @@ public class App {
     post("/tasks", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
 
+      // include an if conditional that attempts to retrieve an ArrayList from the session saved under the key "tasks". If that ArrayList does not exist yet, we create a new one and add it to the session
       ArrayList<Task> tasks = request.session().attribute("tasks");
         if (tasks == null) {
           tasks = new ArrayList<Task>();
           request.session().attribute("tasks", tasks);
         }
 
+      // create our Task object and add it into the tasks ArrayList with: tasks.add(newTask);
       String description = request.queryParams("description");
       Task newTask = new Task(description);
       tasks.add(newTask); // adding the task to the arrayList
